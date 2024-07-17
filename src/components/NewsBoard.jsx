@@ -6,7 +6,7 @@ const NewsBoard = ({ category, search }) => {
   const [originalCategory, setOriginalCategory] = useState(category);
 
   useEffect(() => {
-    let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=${import.meta.env.VITE_API_KEY}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=1441beb21a5d4b0ab0f807ada499785c`;
 
     // Determine whether to include category or search term in the API query
     if (search) {
