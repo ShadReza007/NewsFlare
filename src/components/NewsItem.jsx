@@ -1,7 +1,8 @@
+import React from 'react';
 import LazyLoad from 'react-lazyload';
 import placeholderImage from '../assets/stock-vector-breaking-news-template-with-d-red-and-blue-badge-breaking-news-text-on-dark-blue-with-earth-and-1928997539.jpg';
 
-const NewsItem = ({ title, description, src, url }) => {
+const NewsItem = ({ title, description, src, url, realProbability, fakeProbability }) => {
   return (
     <div className="card bg-dark text-light mb-3 d-inline-block my-3 mx-3 px-2 py-2" style={{ maxWidth: "345px", width: "100%", height: "100%" }}>
       <LazyLoad height={200} offset={100}>
@@ -12,10 +13,19 @@ const NewsItem = ({ title, description, src, url }) => {
           alt="..."
         />
       </LazyLoad>
-      <div className="card-body d-flex flex-column justify-content-between" style={{ minHeight: "100%" }}>
+      <div className="card-body d-flex flex-column justify-content-between" style={{ minHeight: "278px" }}>
         <h5 className="card-title">{title.slice(0, 50)}</h5>
-        <p className="card-text">{description ? description.slice(0, 90) : "No Description of this event"}</p>
-        <a href={url} className="btn btn-primary">Read More</a>
+        <p>
+          <span className="badge bg-success">
+            Real Probability: {realProbability !== undefined ? (realProbability * 100).toFixed(2) + '%' : 'N/A'}
+          </span>
+          <br />
+          <span className="badge bg-danger">
+            Fake Probability: {fakeProbability !== undefined ? (fakeProbability * 100).toFixed(2) + '%' : 'N/A'}
+          </span>
+        </p>
+        <p className="card-text">{description ? description.slice(0, 107)+"..." : "No Description of this event"}</p>
+        <a href={url} className="btn btn-primary mt-auto">Read More</a>
       </div>
     </div>
   );
